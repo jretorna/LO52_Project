@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MissileLauncher</string>
+    <string name="missileLauncher">Missile Launcher</string>
+    <string name="action_settings">Settings</string>
+    <!-- Descriptions ImageView -->
+    <string name="descriptionImageButtonToRight">Btn To Right</string>
+    <string name="descriptionImageButtonToLeft">Btn To Left</string>
+    <string name="descriptionImageButtonToTop">Btn To Top</string>
+    <string name="descriptionImageButtonToBottom">Btn To Bottom</string>
+    <string name="descriptionImageButtonFireBtn">Btn Fire</string>
+
+</resources>
