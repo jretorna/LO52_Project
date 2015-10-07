@@ -2,77 +2,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4A3434"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fr.utbm.RetornazLorrain.missilelauncher.LauncherActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/missileLauncher"
-        android:textSize="28sp"
-        android:layout_centerHorizontal="true" />
-    
-    <ImageButton
-        android:contentDescription="@string/descriptionImageButtonToLeft"
-        android:id="@+id/toLeftBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"	
-        android:layout_marginTop="90dp"
-        android:background="@android:color/transparent"
-        android:drawableTop="@drawable/to_left"
-        android:src="@drawable/to_left" />
-        
-    <ImageButton
-        android:contentDescription="@string/descriptionImageButtonToRight"
-        android:id="@+id/toRightBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"	
-        android:layout_marginTop="90dp"
-        android:background="@android:color/transparent"
-        android:drawableTop="@drawable/to_right"
-        android:src="@drawable/to_right" />
-                
-     <ImageButton
-        android:contentDescription="@string/descriptionImageButtonToTop"
-        android:id="@+id/toTopBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="57dp"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:drawableTop="@drawable/to_top"
-        android:src="@drawable/to_top" />
-                        
-     <ImageButton
-       android:contentDescription="@string/descriptionImageButtonToBottom"
-       android:id="@+id/toBottomBtn"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginLeft="57dp"
-       android:layout_marginStart="57dp"	
-       android:layout_marginTop="175dp"
-       android:background="@android:color/transparent"
-       android:drawableTop="@drawable/to_bottom"
-       android:src="@drawable/to_bottom" />
-     
           <ImageButton
-       android:contentDescription="@string/descriptionImageButtonFireBtn"
-       android:id="@+id/FireBtn"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginLeft="300dp"
-       android:layout_marginStart="300dp"	
-       android:layout_marginTop="50dp"
-       android:background="@android:color/transparent"
-       android:drawableTop="@drawable/fire_btn"
-       android:src="@drawable/fire_btn" />
+              android:id="@+id/FireBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true"
+              android:layout_alignParentTop="false"
+              android:layout_centerVertical="true"
+              android:layout_marginEnd="100dp"
+              android:layout_marginRight="100dp"
+              android:background="@android:color/transparent"
+              android:contentDescription="@string/descriptionImageButtonFireBtn"
+              android:drawableTop="@drawable/to_fire_btn"
+              android:src="@drawable/fire_btn" />
+
+          <ImageButton
+              android:id="@+id/toRightBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+			  android:layout_toRightOf="@+id/toBottomBtn"
+   			  android:layout_toEndOf="@+id/toBottomBtn"
+ 			  android:layout_alignBottom="@+id/toBottomBtn"
+              android:background="@android:color/transparent"
+              android:contentDescription="@string/descriptionImageButtonToRight"
+              android:drawableTop="@drawable/to_right"
+              android:src="@drawable/right_btn" />
+
+          <ImageButton
+              android:id="@+id/toLeftBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentStart="true"
+              android:layout_alignTop="@+id/toBottomBtn"
+              android:background="@android:color/transparent"
+              android:contentDescription="@string/descriptionImageButtonToLeft"
+              android:drawableTop="@drawable/to_left"
+              android:src="@drawable/left_btn" />
+
+          <ImageButton
+              android:id="@+id/toBottomBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignBottom="@+id/FireBtn"
+			  android:layout_toRightOf="@+id/toLeftBtn"
+ 			  android:layout_toEndOf="@+id/toLeftBtn"
+              android:background="@android:color/transparent"
+              android:contentDescription="@string/descriptionImageButtonToBottom"
+              android:drawableTop="@drawable/to_bottom"
+              android:src="@drawable/bottom_btn" />
+          
+          <ImageButton
+              android:id="@+id/settingBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true"
+              android:background="@android:color/transparent"
+              android:contentDescription="@string/descriptionImageButtonSettingBtn"
+              android:drawableTop="@drawable/param"
+              android:src="@drawable/param" />
+
+          <ImageButton
+              android:id="@+id/toTopBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/toLeftBtn"
+              android:layout_toEndOf="@+id/toLeftBtn"
+              android:layout_above="@+id/toBottomBtn"
+              android:background="@android:color/transparent"
+              android:contentDescription="@string/descriptionImageButtonToTop"
+              android:drawableTop="@drawable/to_top"
+              android:src="@drawable/top_btn" />
 
 </RelativeLayout>

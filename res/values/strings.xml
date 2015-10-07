@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MissileLauncher</string>
+    <string name="app_name">Missiles Launcher</string>
     <string name="missileLauncher">Missile Launcher</string>
     <string name="action_settings">Settings</string>
     <!-- Descriptions ImageView -->
@@ -10,5 +10,6 @@
     <string name="descriptionImageButtonToTop">Btn To Top</string>
     <string name="descriptionImageButtonToBottom">Btn To Bottom</string>
     <string name="descriptionImageButtonFireBtn">Btn Fire</string>
-
+    <string name="descriptionImageButtonSettingBtn">Btn Setting</string>
+    
 </resources>

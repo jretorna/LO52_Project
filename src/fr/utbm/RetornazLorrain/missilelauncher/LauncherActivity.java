@@ -12,7 +12,8 @@ import android.widget.Toast;
 public class LauncherActivity extends Activity {
 
 	/*-----------------*/
-	ImageButton toRightBtn, toLeftBtn, toTopBtn, toBottomBtn, fireBtn;
+	ImageButton toRightBtn, toLeftBtn, toTopBtn, toBottomBtn, fireBtn,
+			settingBtn;
 	/*-----------------*/
 
 	@Override
@@ -24,6 +25,7 @@ public class LauncherActivity extends Activity {
 		toTopBtn = (ImageButton) findViewById(R.id.toTopBtn);
 		toBottomBtn = (ImageButton) findViewById(R.id.toBottomBtn);
 		fireBtn = (ImageButton) findViewById(R.id.FireBtn);
+		settingBtn = (ImageButton) findViewById(R.id.settingBtn);
 		initListener();
 	}
 
@@ -54,7 +56,8 @@ public class LauncherActivity extends Activity {
 				// TODO JR - Clic sur bas (descendre la tourelle)
 				// XXX Jeremy supprimer ce print
 				Toast.makeText(getApplicationContext(),
-						"Ordre : descendre la tourelle", Toast.LENGTH_SHORT).show();
+						"Ordre : descendre la tourelle",
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -64,7 +67,8 @@ public class LauncherActivity extends Activity {
 				// TODO JR - Clic sur haut (monter la tourelle)
 				// XXX Jeremy supprimer ce print
 				Toast.makeText(getApplicationContext(),
-						"Ordre : monter la tourelle", Toast.LENGTH_SHORT).show();
+						"Ordre : monter la tourelle",
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -97,6 +101,16 @@ public class LauncherActivity extends Activity {
 				// XXX Jeremy supprimer ce print
 				Toast.makeText(getApplicationContext(), "Ordre : FIRE !!",
 						Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		settingBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				// TODO JR - Clic sur droite (tourner la tourelle à droite)
+				// XXX Jeremy supprimer ce print
+				Toast.makeText(getApplicationContext(),
+						"Ordre : Setting item ask", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
