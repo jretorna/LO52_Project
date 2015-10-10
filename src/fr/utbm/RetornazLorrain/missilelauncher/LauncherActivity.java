@@ -1,19 +1,29 @@
 package fr.utbm.RetornazLorrain.missilelauncher;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LauncherActivity extends Activity {
 
 	/*-----------------*/
-	ImageButton toRightBtn, toLeftBtn, toTopBtn, toBottomBtn, fireBtn,
+	private ImageButton toRightBtn, toLeftBtn, toTopBtn, toBottomBtn, fireBtn,
 			settingBtn;
+	private TextView cmdLaunched;
+	String line_separator = System.getProperty("line.separator");
+	private List<CommandeLaunched> cmdList = new ArrayList<CommandeLaunched>();
+	private final int nbMaxIteration = 9;
 	/*-----------------*/
 
 	@Override
@@ -26,9 +36,9 @@ public class LauncherActivity extends Activity {
 		toBottomBtn = (ImageButton) findViewById(R.id.toBottomBtn);
 		fireBtn = (ImageButton) findViewById(R.id.FireBtn);
 		settingBtn = (ImageButton) findViewById(R.id.settingBtn);
+		cmdLaunched = (TextView) findViewById(R.id.listCmd);
 		initListener();
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -54,10 +64,17 @@ public class LauncherActivity extends Activity {
 			@Override
 			public void onClick(final View v) {
 				// TODO JR - Clic sur bas (descendre la tourelle)
-				// XXX Jeremy supprimer ce print
-				Toast.makeText(getApplicationContext(),
-						"Ordre : descendre la tourelle",
-						Toast.LENGTH_SHORT).show();
+				if (cmdList.size() > nbMaxIteration) {
+					Log.d("raz", "raz");
+					cmdList.remove(nbMaxIteration);
+					cmdList.add(0, new CommandeLaunched(setDate(),
+							"Descendre la tourelle"));
+				} else {
+					Log.d("no raz", "no raz");
+					cmdList.add(new CommandeLaunched(setDate(),
+							"Descendre la tourelle"));
+				}
+				refreshList();
 			}
 		});
 
@@ -65,10 +82,17 @@ public class LauncherActivity extends Activity {
 			@Override
 			public void onClick(final View v) {
 				// TODO JR - Clic sur haut (monter la tourelle)
-				// XXX Jeremy supprimer ce print
-				Toast.makeText(getApplicationContext(),
-						"Ordre : monter la tourelle",
-						Toast.LENGTH_SHORT).show();
+				if (cmdList.size() > nbMaxIteration) {
+					Log.d("raz", "raz");
+					cmdList.remove(nbMaxIteration);
+					cmdList.add(0, new CommandeLaunched(setDate(),
+							"Monter la tourelle"));
+				} else {
+					Log.d("no raz", "no raz");
+					cmdList.add(new CommandeLaunched(setDate(),
+							"Monter la tourelle"));
+				}
+				refreshList();
 			}
 		});
 
@@ -76,10 +100,17 @@ public class LauncherActivity extends Activity {
 			@Override
 			public void onClick(final View v) {
 				// TODO JR - Clic sur gauche (tourner la tourelle à gauche)
-				// XXX Jeremy supprimer ce print
-				Toast.makeText(getApplicationContext(),
-						"Ordre : tourner la tourelle à gauche",
-						Toast.LENGTH_SHORT).show();
+				if (cmdList.size() > nbMaxIteration) {
+					Log.d("raz", "raz");
+					cmdList.remove(nbMaxIteration);
+					cmdList.add(0, new CommandeLaunched(setDate(),
+							"Tourner la tourelle à gauche"));
+				} else {
+					Log.d("no raz", "no raz");
+					cmdList.add(new CommandeLaunched(setDate(),
+							"Tourner la tourelle à gauche"));
+				}
+				refreshList();
 			}
 		});
 
@@ -87,10 +118,16 @@ public class LauncherActivity extends Activity {
 			@Override
 			public void onClick(final View v) {
 				// TODO JR - Clic sur droite (tourner la tourelle à droite)
-				// XXX Jeremy supprimer ce print
-				Toast.makeText(getApplicationContext(),
-						"Ordre : tourner la tourelle à droite",
-						Toast.LENGTH_SHORT).show();
+				if (cmdList.size() > nbMaxIteration) {
+					Log.d("raz", "raz");
+					cmdList.remove(nbMaxIteration);
+					cmdList.add(0, new CommandeLaunched(setDate(),
+							"Tourner la tourelle à droite"));
+				} else {
+					cmdList.add(new CommandeLaunched(setDate(),
+							"Tourner la tourelle à droite"));
+				}
+				refreshList();
 			}
 		});
 
@@ -98,9 +135,14 @@ public class LauncherActivity extends Activity {
 			@Override
 			public void onClick(final View v) {
 				// TODO JR - Clic sur droite (tourner la tourelle à droite)
-				// XXX Jeremy supprimer ce print
-				Toast.makeText(getApplicationContext(), "Ordre : FIRE !!",
-						Toast.LENGTH_SHORT).show();
+				if (cmdList.size() > nbMaxIteration) {
+					Log.d("raz", "raz");
+					cmdList.remove(nbMaxIteration);
+					cmdList.add(0, new CommandeLaunched(setDate(), "FIRE !!!"));
+				} else {
+					cmdList.add(new CommandeLaunched(setDate(), "FIRE !!!"));
+				}
+				refreshList();
 			}
 		});
 
@@ -114,5 +156,36 @@ public class LauncherActivity extends Activity {
 			}
 		});
 	}
+	private String setDate() {
+		String date = "";
+		Calendar c = Calendar.getInstance();
+		if (c.get(Calendar.HOUR_OF_DAY) < 9)
+			date = "0" + Integer.toString(c.get(Calendar.HOUR_OF_DAY));
+		else
+			date = Integer.toString(c.get(Calendar.HOUR_OF_DAY));
+		if (c.get(Calendar.MINUTE) < 9)
+			date = date + ":0" + c.get(Calendar.MINUTE);
+		else
+			date = date + ":" + Integer.toString(c.get(Calendar.MINUTE));
+		if (c.get(Calendar.SECOND) < 9)
+			date = date + ":0" + Integer.toString(c.get(Calendar.SECOND));
+		else
+			date = date + ":" + Integer.toString(c.get(Calendar.SECOND));
+		return date;
+	}
 
+	private void refreshList() {
+		int j = 0;
+		// XXX Jeremy supprimer ce print
+		Log.d("refreshList", "Je refresh la liste");
+		cmdLaunched.setText("");
+		for (CommandeLaunched cl : cmdList) {
+			cmdLaunched.setText(cmdLaunched.getText() + cl.getDate() + " : "
+					+ cl.getCmd() + line_separator);
+			j++;
+		}
+		// XXX Jeremy supprimer ce print
+		Log.e("total refresh", "list refresh : " + j);
+
+	}
 }
