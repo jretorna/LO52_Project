@@ -1,16 +1,16 @@
 package fr.utbm.RetornazLorrain.missilelauncher;
 
-public class CommandeLaunched {
+public class CommandeLaunchedMessage {
 	/*-------------------*/
 	private String date;
 	private String cmd;
 	/*-------------------*/
 
-	public CommandeLaunched() {
+	public CommandeLaunchedMessage() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommandeLaunched(final String date, final String cmd) {
+	public CommandeLaunchedMessage(final String date, final String cmd) {
 		super();
 		this.date = date;
 		this.cmd = cmd;
