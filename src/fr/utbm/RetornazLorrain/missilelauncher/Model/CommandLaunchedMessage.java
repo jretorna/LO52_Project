@@ -1,16 +1,23 @@
-package fr.utbm.RetornazLorrain.missilelauncher;
+package fr.utbm.RetornazLorrain.missilelauncher.Model;
 
-public class CommandeLaunchedMessage {
+/**
+ * @version 01.00.00
+ *
+ * @author Jeremy - V01.00.00
+ * @date 7 nov. 2015<br>
+ *
+ */
+public class CommandLaunchedMessage {
 	/*-------------------*/
 	private String date;
 	private String cmd;
 	/*-------------------*/
 
-	public CommandeLaunchedMessage() {
+	public CommandLaunchedMessage() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommandeLaunchedMessage(final String date, final String cmd) {
+	public CommandLaunchedMessage(final String date, final String cmd) {
 		super();
 		this.date = date;
 		this.cmd = cmd;
