@@ -14,12 +14,12 @@ public class CommandManager {
 	private final int nbMaxIteration = 9;
 	private List<CommandLaunchedMessage> cmdList;
 	/*-------- JNI ---------*/
-	private static native void sendRightCommand(int[] rightCommand);
-	private static native void sendLeftCommand(int[] leftCommand);
-	private static native void sendFireCommand(int[] fireCommand);
-	private static native void sendTopCommand(int[] topCommand);
-	private static native void sendBottomCommand(int[] bottomCommand);
-	private static native void sendStopCommand(int[] stopCommand);
+	private static native void sendRightCommand();
+	private static native void sendLeftCommand();
+	private static native void sendFireCommand();
+	private static native void sendTopCommand();
+	private static native void sendBottomCommand();
+	private static native void sendStopCommand();
 
 	public CommandManager() {
 		if (this.eventListener != null) {
@@ -67,7 +67,8 @@ public class CommandManager {
 	private void writeOnList(final String _date, final String _msg) {
 		if (cmdList.size() > nbMaxIteration) {
 			cmdList.remove(0);
-			cmdList.add(nbMaxIteration, new CommandLaunchedMessage(_date, _msg));
+			cmdList.add(nbMaxIteration,
+					new CommandLaunchedMessage(_date, _msg));
 		} else {
 			cmdList.add(new CommandLaunchedMessage(_date, _msg));
 		}
@@ -100,7 +101,8 @@ public class CommandManager {
 	/*------ Fire -----*/
 
 	private void fireUpdateCommandList(final List<CommandLaunchedMessage> _cmdList) {
-		CommandManagerListener[] listenerList = this.eventListener.getListeners(CommandManagerListener.class);
+		CommandManagerListener[] listenerList = this.eventListener.getListeners(
+				CommandManagerListener.class);
 		for (CommandManagerListener listener : listenerList) {
 			listener.updateCommandList(_cmdList);
 		}
