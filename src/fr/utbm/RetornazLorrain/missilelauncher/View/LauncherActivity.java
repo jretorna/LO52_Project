@@ -45,8 +45,7 @@ public class LauncherActivity extends Activity implements OnTouchListener {
 
 	@Override
 	protected void onDestroy() {
-		this.commandManager.removeCommandManagerListener(this.commandManagerListener);
-	};
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {

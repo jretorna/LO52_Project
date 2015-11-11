@@ -13,7 +13,13 @@ public class CommandManager {
 	private Date date;
 	private final int nbMaxIteration = 9;
 	private List<CommandLaunchedMessage> cmdList;
-	/*---------------------*/
+	/*-------- JNI ---------*/
+	private static native void sendRightCommand(int[] rightCommand);
+	private static native void sendLeftCommand(int[] leftCommand);
+	private static native void sendFireCommand(int[] fireCommand);
+	private static native void sendTopCommand(int[] topCommand);
+	private static native void sendBottomCommand(int[] bottomCommand);
+	private static native void sendStopCommand(int[] stopCommand);
 
 	public CommandManager() {
 		if (this.eventListener != null) {
@@ -60,13 +66,20 @@ public class CommandManager {
 
 	private void writeOnList(final String _date, final String _msg) {
 		if (cmdList.size() > nbMaxIteration) {
-			cmdList.remove(nbMaxIteration);
-			cmdList.add(0, new CommandLaunchedMessage(_date, _msg));
+			cmdList.remove(0);
+			cmdList.add(nbMaxIteration, new CommandLaunchedMessage(_date, _msg));
 		} else {
 			cmdList.add(new CommandLaunchedMessage(_date, _msg));
 		}
 		fireUpdateCommandList(cmdList);
 	}
+
+	/*----- JNI ------*/
+
+	static {
+		System.loadLibrary("usb");
+	}
+
 	/*-------- Listeners --------*/
 
 	/**
